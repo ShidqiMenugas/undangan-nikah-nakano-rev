@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Undangan Pernikahan Nakano Bersaudara</title>
+  <meta name="description" content="Undangan pernikahan digital Nakano Bersaudara">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌸%3C/text%3E%3C/svg%3E">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Waiting+for+the+Sunrise&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body class="terkunci">
+  <div id="cover" class="cover">
+  <img src="images/opening-bg.jpg" alt="" class="cover-art">
+  <div class="cover-teks">
+    <p class="mb-0">Kami mempersembahkan:</p>
+    <h1 class="display-3">Pernikahan Nakano Bersaudara</h1>
+    <p>Sabtu, 26 Desember 2026</p>
+    <button id="btnBuka" class="btn btn-light btn-lg">Buka Undangan</button>
+  </div>
+</div>
+  <audio id="musik" src="audio/musik.mp3" loop></audio>
+  <button id="btnMusik" class="btn btn-dark btn-musik">♪ Putar</button>
+
+  <header class="container text-center py-4">
+    <p class="mb-1">Dengan gembira kami mengundang Anda ke pernikahan</p>
+    <h1 class="display-4">Nakano Bersaudara</h1>
+    <div class="row g-3 mt-3 detail">
+      <div class="col-md-4"><h2 class="h6">Tanggal</h2><p>Sabtu, 26 Desember 2026</p></div>
+      <div class="col-md-4"><h2 class="h6">Waktu</h2><p>Akad 10.00 WIB, resepsi 12.00 WIB</p></div>
+      <div class="col-md-4"><h2 class="h6">Lokasi</h2><p>Gedung Serbaguna UNESA, Surabaya</p></div>
+    </div>
+    <p class="mt-4 mb-0 small">Menuju hari bahagia</p>
+    <div id="countdown" class="d-flex justify-content-center gap-3 mt-2"></div>
+  </header>
+
+  <main>
+    <section class="faces" id="faces" aria-label="Lima mempelai">
+      <button class="face" style="--c:#e9b824" data-i="0"><img src="images/ichika.jpg" alt="Ichika"><span>Ichika</span></button>
+      <button class="face" style="--c:#e0508a" data-i="1"><img src="images/nino.jpg" alt="Nino"><span>Nino</span></button>
+      <button class="face" style="--c:#4a6fd8" data-i="2"><img src="images/miku.jpg" alt="Miku"><span>Miku</span></button>
+      <button class="face" style="--c:#3fa760" data-i="3"><img src="images/yotsuba.jpg" alt="Yotsuba"><span>Yotsuba</span></button>
+      <button class="face" style="--c:#e0472f" data-i="4"><img src="images/itsuki.jpg" alt="Itsuki"><span>Itsuki</span></button>
+    </section>
+
+    <section class="container my-4">
+      <div id="profil" class="card profil" aria-live="polite">
+        <div class="card-body text-center">Pilih salah satu mempelai di atas untuk melihat profilnya.</div>
+      </div>
+    </section>
+
+    <section class="container my-5 pria text-center">
+      <p class="pria-pengantar">dengan sang pria beruntung:</p>
+      <figure class="pria-foto">
+        <img src="images/gwehj.jpg" alt="Mempelai pria">
+      </figure>
+      <h2 class="h4 mb-1">Shiki</h2>
+    </section>
+
+    <section class="container my-5 rundown">
+      <h2 class="h4 text-center">Rangkaian Acara</h2>
+      <ol class="timeline">
+        <li style="--c:#e9b824"><time>09.30</time><h3 class="h6 mb-1">Tamu Datang</h3><p class="mb-0">Registrasi dan salam sambutan.</p></li>
+        <li style="--c:#e0508a"><time>10.00</time><h3 class="h6 mb-1">Akad Nikah</h3><p class="mb-0">Lima janji suci dalam satu hari.</p></li>
+        <li style="--c:#4a6fd8"><time>11.00</time><h3 class="h6 mb-1">Sesi Foto</h3><p class="mb-0">Foto bersama keluarga besar.</p></li>
+        <li style="--c:#3fa760"><time>12.00</time><h3 class="h6 mb-1">Resepsi</h3><p class="mb-0">Santap siang dan hiburan.</p></li>
+        <li style="--c:#e0472f"><time>14.00</time><h3 class="h6 mb-1">Penutupan</h3><p class="mb-0">Ucapan terima kasih dan lempar bunga.</p></li>
+      </ol>
+    </section>
+
+    <section class="container mb-5 rsvp">
+      <h2 class="h4 text-center">Konfirmasi Kehadiran</h2>
+      <form id="formRsvp" class="row g-3 mt-1" novalidate>
+        <div class="col-12">
+          <label for="nama" class="form-label">Nama</label>
+          <input id="nama" type="text" class="form-control">
+          <div class="invalid-feedback">Nama wajib diisi!</div>
+        </div>
+        <div class="col-md-6">
+          <label for="kehadiran" class="form-label">Kehadiran</label>
+          <select id="kehadiran" class="form-select">
+            <option value="">Pilih...</option><option>Hadir</option><option>Tidak hadir</option>
+          </select>
+          <div class="invalid-feedback">Pilih salah satu.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="jumlah" class="form-label">Jumlah tamu</label>
+          <input id="jumlah" type="number" min="1" max="5" value="1" class="form-control">
+          <div class="invalid-feedback">Isi angka 1 sampai 5.</div>
+        </div>
+        <div class="col-12">
+          <label for="ucapan" class="form-label">Ucapan (opsional)</label>
+          <textarea id="ucapan" rows="3" class="form-control"></textarea>
+        </div>
+        <div class="col-12 d-grid"><button type="submit" class="btn btn-primary">Kirim</button></div>
+      </form>
+      <p class="small text-muted mt-2 mb-0">Ucapan hanya tersimpan di browser ini.</p>
+      <div id="daftarUcapan" class="mt-3"></div>
+    </section>
+        <section class="penutup text-center">
+      <figure class="mb-0">
+        <img src="images/on-acara.jpg" alt="Foto prewedding" class="img-fluid">
+        <figcaption>Kami menantikan kedatangan Anda!</figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <footer class="text-center small py-4">
+    Kredit: Negi Haruba, selaku penulis dan ilustrator, <em>Gotoubun no Hanayome</em> sampul chapter 2 dan vol. 7-11. Daizy dari Pixiv, selaku ilustrator dari <em>fan art</em> yang digunakan. Semuanya digunakan untuk keperluan tugas tanpa niat monetisasi.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+:root { --ink:#222845; --paper:#f5f6fb; }
+body { background:var(--paper); color:var(--ink); font-family:"Zen Kaku Gothic New", sans-serif; }
+h1, h2 { font-family:"Waiting for the Sunrise", cursive; }
+.detail p { margin:0; }
+.detail h2 { font-family:"Zen Kaku Gothic New", sans-serif; font-weight:700; }
+
+.faces { display:flex; max-width:1250px; margin:0 auto; }
+.face { flex:1 1 0; min-width:0; padding:0; border:0; background:none; position:relative;
+        height:clamp(220px, 34vw, 380px); overflow:hidden; cursor:pointer; }
+.face img { width:100%; height:100%; object-fit:cover; display:block; transition:filter .3s, transform .3s; }
+.face:hover img { transform:scale(1.04); }
+.face:focus-visible { outline:3px solid var(--c); outline-offset:-3px; }
+.face::after { content:""; position:absolute; left:0; right:0; bottom:0; height:6px;
+               background:var(--c); transform:scaleY(0); transform-origin:bottom; transition:transform .3s; }
+.face.active::after { transform:scaleY(1); }
+.face span { position:absolute; left:0; right:0; bottom:10px; color:#fff; font-weight:700;
+             text-shadow:0 1px 4px rgba(0,0,0,.6); opacity:0; transition:opacity .3s; }
+.face:hover span, .face.active span { opacity:1; }
+.faces.has-active .face:not(.active) img { filter:grayscale(.85) brightness(.92); }
+
+.profil { max-width:640px; margin:0 auto; border-width:0 0 0 6px; border-left-color:var(--aksen, #ccc); }
+.kotak { min-width:72px; padding:.6rem .8rem; background:#fff; border-radius:.5rem; }
+.kotak strong { display:block; font-size:1.6rem; }
+
+@media (prefers-reduced-motion: reduce) { * { transition:none !important; } }
+
+body.terkunci { overflow:hidden; }
+.cover { position:fixed; inset:0; z-index:2000; display:flex; flex-direction:column; align-items:center;
+         justify-content:center; gap:.75rem; text-align:center; padding:1rem; color:#fff; background:var(--ink);
+         overflow:hidden; transition:transform .9s cubic-bezier(.77,0,.18,1), visibility 0s .9s; }
+.cover::before { content:""; position:absolute; inset:-30px; z-index:-1;
+  background:url("images/opening-bg.jpg") center / cover; filter:blur(18px) brightness(.45); }
+.cover::after { content:""; position:absolute; left:0; right:0; bottom:0; height:10px;
+  background:linear-gradient(90deg,#e9b824 20%,#e0508a 0 40%,#4a6fd8 0 60%,#3fa760 0 80%,#e0472f 0); }
+.cover.tutup { transform:translateY(-100%); visibility:hidden; }
+.cover-art { height:min(42vh, 563px); width:auto; max-width:80%; border-radius:.5rem;
+             box-shadow:0 10px 40px rgba(0,0,0,.5); }
+
+header, main > section, footer { transition:opacity .8s ease, transform .8s ease; }
+body.terkunci header,
+body.terkunci main > section,
+body.terkunci footer { opacity:0; transform:translateY(24px); }
+
+header { transition-delay:.25s; }
+main > section:nth-child(1) { transition-delay:.45s; }
+main > section:nth-child(2) { transition-delay:.6s; }
+main > section:nth-child(3) { transition-delay:.75s; }
+main > section:nth-child(4) { transition-delay:.9s; }
+main > section:nth-child(5) { transition-delay:1.05s; }
+main > section:nth-child(6) { transition-delay:1.2s; }
+footer { transition-delay:1.35s; }
+
+@media (min-width:768px) {
+  .cover { flex-direction:row; gap:3rem; }
+  .cover-art { height:min(78vh, 563px); }
+}
+
+.btn-musik { position:fixed; right:1rem; bottom:1rem; z-index:1000; border-radius:2rem; }
+.rsvp { max-width:640px; }
+
+.rsvp .form-control:focus,
+.rsvp .form-select:focus { border-color:#8f5fe8; box-shadow:0 0 0 .25rem rgba(143,95,232,.25); }
+
+.rsvp .btn-primary {
+  --bs-btn-bg:#8f5fe8;            --bs-btn-border-color:#8f5fe8;
+  --bs-btn-hover-bg:#7a49d1;      --bs-btn-hover-border-color:#7a49d1;
+  --bs-btn-active-bg:#6a3dbb;     --bs-btn-active-border-color:#6a3dbb;
+  --bs-btn-focus-shadow-rgb:143,95,232;
+}
+
+body::before { content:""; position:fixed; inset:-20px; z-index:-1;
+  background:
+    linear-gradient(rgba(245,246,251,.5), rgba(245,246,251,.7)),
+    url("images/sakura-bg.jpg") center / cover;
+  filter:blur(7px); }
+
+.kelopak { position:fixed; top:-30px; z-index:500; pointer-events:none; opacity:.85;
+  background:linear-gradient(135deg,#ffd1e3,#f59bc1); border-radius:100% 0 100% 0;
+  animation-name:jatuh; animation-timing-function:linear; animation-fill-mode:forwards; }
+@keyframes jatuh {
+  0%   { transform:translate(0,0) rotate(0deg); }
+  50%  { transform:translate(var(--goyang),55vh) rotate(180deg); }
+  100% { transform:translate(calc(var(--goyang) * -1),110vh) rotate(360deg); }
+}
+
+.pria { max-width:640px; }
+.pria-pengantar { font-family:"Waiting for the Sunrise", cursive; font-size:clamp(1.4rem, 4.5vw, 2.2rem); margin-bottom:1rem; }
+.pria-foto { width:min(220px, 60vw); aspect-ratio:4 / 5; margin:0 auto 1rem; border-radius:1rem; overflow:hidden;
+             border:4px solid #8f5fe8; box-shadow:0 8px 24px rgba(34,40,69,.25); }
+.pria-foto img { width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
+
+.rundown { max-width:640px; }
+.timeline { list-style:none; margin:1.5rem 0 0; padding:0 0 0 1.5rem; border-left:3px solid rgba(34,40,69,.2); }
+.timeline li { position:relative; margin-bottom:1rem; padding:.75rem 1rem; background:#fff; border-radius:.5rem; }
+.timeline li::before { content:""; position:absolute; left:calc(-1.5rem - 8.5px); top:1.1rem; width:14px; height:14px;
+                       border-radius:50%; background:var(--c); box-shadow:0 0 0 3px #fff; }
+.timeline time { display:block; font-size:.85rem; font-weight:700; opacity:.7; }
+
+.penutup { margin-top:3rem; }
+.penutup img { display:block; width:100%; max-width:1100px; margin:0 auto;
+  aspect-ratio:1 / 1; object-fit:cover; object-position:center;
+  -webkit-mask-image:radial-gradient(ellipse at center, #000 65%, transparent 100%);
+          mask-image:radial-gradient(ellipse at center, #000 65%, transparent 100%); }
+@media (min-width:768px) { .penutup img { aspect-ratio:16 / 9; } }
+.penutup figcaption { font-family:"Waiting for the Sunrise", cursive;
+  font-size:clamp(1.6rem, 5vw, 2.8rem); padding:1rem 1rem 2.5rem; }
